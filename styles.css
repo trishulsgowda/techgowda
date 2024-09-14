@@ -73,10 +73,11 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap; /* Added to allow wrapping on smaller screens */
 }
 
 .name h2 {
-    color: #76c7c0; /* Teal color */
+    color: #76c7c0;
     font-size: 28px;
 }
 
@@ -85,18 +86,14 @@ footer {
     text-align: right;
 }
 
-.about-text p {
-    font-size: 20px;
-    line-height: 1.5;
-}
-
 .about-image {
     width: 40%;
     text-align: left;
 }
 
 .about-image img {
-    width: 300px;
+    width: 100%; /* Adjusted to make image responsive */
+    max-width: 300px;
     border-radius: 10px;
 }
 
@@ -131,18 +128,6 @@ footer {
     font-size: 18px;
 }
 
-@keyframes float {
-    0% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-    100% {
-        transform: translateY(0px);
-    }
-}
-
 .education-container {
     display: flex;
     justify-content: center;
@@ -163,34 +148,29 @@ footer {
     background-color: #333;
 }
 
-.education-box p {
-    margin: 5px 0;
-    font-size: 16px;
-}
-
 .experience-container {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    align-items: center; /* Center the cards horizontally */
+    align-items: center;
 }
 
 .experience-card {
     background-color: #1f1f1f;
     border-radius: 10px;
-    padding: 10px 20px; /* Reduced padding on top and bottom */
+    padding: 10px 20px;
     transition: max-height 0.3s ease, padding 0.3s ease, width 0.3s ease;
-    max-height: 30px; /* Reduced height to only show the title */
+    max-height: 30px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    width: 50%; /* Cards initially take up half of the container width */
+    width: 50%;
 }
 
 .experience-card:hover {
-    max-height: 180px; /* Reduced expanded height */
-    padding: 15px 20px; /* Slightly increased padding on hover for better content spacing */
-    width: 80%; /* Expands to 80% width on hover */
+    max-height: 180px;
+    padding: 15px 20px;
+    width: 80%;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
@@ -225,7 +205,7 @@ footer {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 30px;
-    padding: 0 20px; /* Padding for spacing on page edges */
+    padding: 0 20px;
 }
 
 .blog-card {
@@ -252,21 +232,82 @@ footer {
 .blog-card h2 a {
     color: #76c7c0;
     text-decoration: none;
-    font-size: 22px; /* Increased font size for title */
+    font-size: 22px;
 }
 
 .blog-card h2 a:hover {
     text-decoration: underline;
 }
 
-.blog-card p {
-    color: #b0b0b0;
-    font-size: 16px; /* Slightly increased font size for description */
-    line-height: 1.6;
+/* Media Queries for Mobile Devices */
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .about-text,
+    .about-image {
+        width: 100%;
+        text-align: center;
+    }
+
+    .about-text {
+        text-align: left;
+    }
+
+    .skills-container,
+    .education-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .experience-card {
+        width: 90%; /* Make cards full width on mobile */
+    }
+
+    .blog-table {
+        grid-template-columns: 1fr; /* Single column on mobile */
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    section {
+        padding: 20px;
+    }
 }
 
+@media (max-width: 480px) {
+    h1 {
+        font-size: 24px;
+    }
 
+    .skill-box,
+    .education-box {
+        width: 100%;
+    }
 
+    .about-text p {
+        font-size: 18px;
+    }
 
+    .skill-box p {
+        font-size: 16px;
+    }
 
+    .blog-card {
+        padding: 15px;
+    }
 
+    .experience-card {
+        width: 100%;
+    }
+}
